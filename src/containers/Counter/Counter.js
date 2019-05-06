@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
 
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+
+import * as actionCreators from '../../store/actions/index'
 
 class Counter extends Component {
 
@@ -39,12 +41,12 @@ const mapStateToProps = (state) => {
 
 const mapDispathToProps = (dispath) => {
     return {
-        onIncrementCounter: () => dispath({type: 'INCREMENT'}),
-        decrement: () => dispath({type: 'DECREMENT'}),
-        add5: () => dispath({type: 'ADD5', value: 5}),
-        remove5: () => dispath({type: 'REMOVE5', value: 5}),
-        addData: (result) => dispath({type: 'ADD_DATA', result: result}),
-        removeData: (id) => dispath({type: 'REMOVE_DATA', resulElId: id})
+        onIncrementCounter: () => dispath(actionCreators.increment()),
+        decrement: () => dispath(actionCreators.decrement()),
+        add5: () => dispath(actionCreators.add5(5)),
+        remove5: () => dispath(actionCreators.remove5(5)),
+        addData: (result) => dispath(actionCreators.addData(result)),
+        removeData: (id) => dispath(actionCreators.removeData(id))
     }
 }
 
